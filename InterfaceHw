@@ -1,0 +1,65 @@
+interface Playable {
+    void play();
+    void stop();
+}
+
+class MusicPlayer implements Playable {
+    private String song;
+    
+    public MusicPlayer(String song) {
+        this.song = song;
+    }
+    
+    @Override
+    public void play() {
+        System.out.println("Started Playing: " + song);
+    }
+    
+    @Override
+    public void stop() {
+        System.out.println("Stopped playing: " + song);
+    }
+}
+
+class VideoGame implements Playable {
+    private String game;
+    
+    public VideoGame(String game) {
+        this.game = game;
+    }
+    
+    @Override
+    public void play() {
+        System.out.println("Starting game: " + game);
+    }
+    
+    @Override
+    public void stop() {
+        System.out.println("Game over: " + game);
+    }
+}
+
+public class InterfaceHw {
+    public static void main(String[] args) {
+        MusicPlayer music = new MusicPlayer("Menu Music");
+        VideoGame game = new VideoGame("Tekken");
+        
+        music.play();
+        music.stop();
+        
+        game.play();
+        game.stop();
+        
+        System.out.println();
+        Playable[] items = {
+            new MusicPlayer("Yesterday"),
+            new VideoGame("Street Fighter")
+        };
+        
+        for (Playable item : items) {
+            item.play();
+            item.stop();
+            System.out.println();
+        }
+    }
+}
